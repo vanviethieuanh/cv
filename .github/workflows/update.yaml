@@ -21,14 +21,9 @@ jobs:
       - name: Install dependencies
         run: pip install rendercv
 
-      - name: List
-        run: |
-          ls
-
       - name: Update CV
-        working-directory: ${{ github.workspace }}
         run: |
-          rendercv render "cv.yaml" --output-folder-name "build"
+          rendercv render "${{ github.workspace }}/cv.yaml" --output-folder-name "build"
 
       - name: Checkout cv branch
         uses: actions/checkout@v2
