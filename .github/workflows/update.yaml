@@ -24,6 +24,7 @@ jobs:
       - name: Update CV
         working-directory: ${{ github.workspace }}
         run: |
+          ls
           rendercv render "cv.yaml" --output-folder-name "build"
 
       - name: Checkout cv branch
