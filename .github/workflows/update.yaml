@@ -1,0 +1,43 @@
+name: Update CV
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.x
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Update CV
+        run: |
+          rendercv render "cv.yaml" --output-folder-name "build"
+
+      - name: Checkout cv branch
+        uses: actions/checkout@v2
+        with:
+          ref: cv
+
+      - name: Copy cv.pdf to root directory
+        run: cp ./build/cv.pdf ./cv.pdf
+
+      - name: Add cv.pdf
+        run: git add cv.pdf
+
+      - name: Commit changes
+        run: git commit -m "Update cv.pdf"
+
+      - name: Push changes
+        run: git push
