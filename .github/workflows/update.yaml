@@ -29,18 +29,9 @@ jobs:
           rendercv render "cv.yaml" --output-folder-name "build"
 
       - name: Copy cv.pdf to root directory
-        run: cp ./build/Van_Viet_Hieu_Anh_CV.pdf ./cv.pdf
-
-      - name: Checkout cv branch
-        uses: actions/checkout@v2
-        with:
-          ref: cv
-
-      - name: Add cv.pdf
-        run: git add cv.pdf
-
-      - name: Commit changes
-        run: git commit -m "Update cv.pdf"
-
-      - name: Push changes
-        run: git push
+        run: |
+          cp ./build/Van_Viet_Hieu_Anh_CV.pdf ./cv.pdf
+          git checkout cv
+          git add cv.pdf
+          git commit -m "Update cv.pdf"
+          git push
