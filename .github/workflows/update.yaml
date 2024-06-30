@@ -22,7 +22,8 @@ jobs:
         run: pip install rendercv
 
       - name: List
-        run: ls
+        run: |
+          ls
 
       - name: Update CV
         working-directory: ${{ github.workspace }}
