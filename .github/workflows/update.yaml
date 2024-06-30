@@ -28,13 +28,13 @@ jobs:
         run: |
           rendercv render "cv.yaml" --output-folder-name "build"
 
+      - name: Copy cv.pdf to root directory
+        run: cp ./build/cv.pdf ./cv.pdf
+
       - name: Checkout cv branch
         uses: actions/checkout@v2
         with:
           ref: cv
-
-      - name: Copy cv.pdf to root directory
-        run: cp ./build/cv.pdf ./cv.pdf
 
       - name: Add cv.pdf
         run: git add cv.pdf
