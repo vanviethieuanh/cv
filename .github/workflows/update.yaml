@@ -18,12 +18,15 @@ jobs:
         with:
           python-version: 3.x
 
+      - name: Checkout code
+        uses: actions/checkout@v2
+
       - name: Install dependencies
         run: pip install rendercv
 
       - name: Update CV
         run: |
-          rendercv render "${{ github.workspace }}/cv.yaml" --output-folder-name "build"
+          rendercv render "cv.yaml" --output-folder-name "build"
 
       - name: Checkout cv branch
         uses: actions/checkout@v2
