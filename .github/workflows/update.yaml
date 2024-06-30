@@ -22,6 +22,7 @@ jobs:
         run: pip install rendercv
 
       - name: Update CV
+        working-directory: ${{ github.workspace }}
         run: |
           rendercv render "cv.yaml" --output-folder-name "build"
 
