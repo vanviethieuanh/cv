@@ -29,7 +29,7 @@ jobs:
           rendercv render "cv.yaml" --output-folder-name "build"
 
       - name: Copy cv.pdf to root directory
-        run: cp ./build/cv.pdf ./cv.pdf
+        run: cp ./build/Van_Viet_Hieu_Anh_CV.pdf ./cv.pdf
 
       - name: Checkout cv branch
         uses: actions/checkout@v2
